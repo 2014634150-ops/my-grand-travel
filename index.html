@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f7f4ee" />
+    <meta name="description" content="一趟九十天以上、从新疆到上海的跨境慢旅行。规划路线、预算与每日行程。" />
+    <title>漫行 90+ · 丝路与海风</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/guides.js" defer></script>
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#top" aria-label="漫行 90+ 首页">
+          <span class="brand-mark">漫</span>
+          <span><strong>漫行</strong><small>LONG WAY HOME · 90+</small></span>
+        </a>
+        <nav class="main-nav" aria-label="主导航">
+          <a class="active" href="#route">旅程概览</a><a href="#itinerary">每日行程</a><a href="#guides">逐国攻略</a><a href="#budget">预算规划</a>
+        </nav>
+        <div class="top-actions"><span class="trip-status"><i></i> 草稿已保存在本机</span><button class="button button-dark button-small" id="exportTop">导出行程 PDF <span>↗</span></button></div>
+      </header>
+
+      <main id="top">
+        <section class="hero wrap">
+          <div class="hero-copy">
+            <p class="eyebrow"><span>FIELD NOTES · 01</span><span>EURASIA / 2027</span></p>
+            <h1>把路走长一点，<br />把世界看仔细。</h1>
+            <p class="hero-lede">从天山脚下出发，穿过中亚的古城与高加索的山风，<br class="desktop-only" />绕过地中海，沿着东南亚的海岸，慢慢回到上海。</p>
+            <div class="hero-facts"><div><strong id="heroDays">96</strong><span>天慢行</span></div><div><strong id="heroStops">19</strong><span>个停靠点</span></div><div><strong>6</strong><span>个时区</span></div><span class="fact-divider"></span><label class="start-date">计划出发<input id="startDate" type="date" value="2027-04-10" aria-label="计划出发日期" /></label></div>
+          </div>
+          <div class="hero-art" aria-label="手绘山峦和旅行路线插画">
+            <div class="sun"></div><div class="art-label label-a">新疆 · 天山</div><div class="art-label label-b">中亚 · 丝路</div><div class="art-label label-c">高加索</div><div class="art-label label-d">印度洋</div>
+            <svg class="landscape" viewBox="0 0 640 390" role="img" aria-label="山脉和沙漠地形插画"><path class="hill hill-back" d="M0 255 76 197l34 21 74-99 46 54 61-95 57 84 42-38 80 111 42-56 79 98 49-35v148H0Z"/><path class="hill hill-mid" d="m0 291 62-51 42 21 68-63 43 31 67-74 57 47 68-64 74 91 52-38 61 46 46-24v135H0Z"/><path class="hill hill-front" d="m0 313 81-27 54 28 59-26 70 33 71-48 61 39 62-22 88 38 94-28v90H0Z"/><path class="river" d="M382 233c-49 30-30 48-72 75s-41 44-94 61-92 7-132 21"/><path class="route-dash" d="M80 273c44-14 65-77 119-68s52 35 99-4 69-14 96-45"/><circle class="art-pin" cx="80" cy="273" r="5"/><circle class="art-pin" cx="299" cy="201" r="5"/><circle class="art-pin" cx="394" cy="156" r="5"/><circle class="art-pin art-pin-end" cx="497" cy="197" r="5"/></svg>
+            <div class="hero-note"><span>✳</span><div><strong>慢慢来，比较快。</strong><small>THE LONG WAY IS THE WAY</small></div></div>
+            <div class="art-index">43°49′N&nbsp; / &nbsp;87°37′E<br />DAY 001 — 096</div>
+          </div>
+        </section>
+
+        <section class="route-section wrap" id="route">
+          <div class="section-heading"><div><p class="eyebrow"><span>01 / THE ROUTE</span></p><h2>一条向西，再向东的线</h2><p class="section-desc">十九次抵达，一次长长的归途。拖动进度，沿路再走一遍。</p></div><div class="route-legend"><span><i class="legend-line"></i> 计划路线</span><span><i class="legend-dot"></i> 停靠城市</span></div></div>
+          <div class="map-card">
+            <div class="map-head"><div><span class="map-kicker">EURASIAN OVERLAND ROUTE</span><strong id="mapCurrent">01 / 乌鲁木齐，中国</strong></div><span class="coordinate" id="mapCoordinate">43.83° N&nbsp; 87.62° E</span></div>
+            <div class="map-canvas" id="mapCanvas"><svg id="routeMap" viewBox="0 0 1000 440" role="img" aria-label="按实际城市坐标绘制的旅行路线地图"></svg></div>
+            <div class="map-controls"><div class="playback"><button id="playButton" class="play-button" aria-label="播放路线动画">▶</button><button id="resetButton" class="reset-button" aria-label="重置路线">↺</button><span id="playLabel">播放旅程</span></div><input id="routeProgress" class="progress" type="range" min="0" max="18" step="0.01" value="0" aria-label="路线播放进度"/><span class="progress-readout"><b id="progressPercent">0%</b><small id="progressStop">第 1 / 19 站</small></span></div>
+          </div>
+          <div class="route-strip"><div class="strip-label">沿途停靠 <span>18 次跨境移动</span></div><div class="stop-list" id="stopList"></div></div>
+        </section>
+
+        <section class="planning-grid wrap" id="itinerary">
+          <div class="itinerary-panel panel">
+            <div class="panel-heading"><div><p class="eyebrow"><span>02 / DAY BY DAY</span></p><h2>留一些空白给路上</h2></div><button class="text-button" id="showAllDays">查看每日安排 <span>↗</span></button></div>
+            <div class="itinerary-summary"><span class="summary-date" id="itineraryDate">2027.04.10 — 2027.07.14</span><span class="summary-days"><b id="summaryDayCount">96</b> days</span></div>
+            <div class="itinerary-list" id="itineraryPreview"></div>
+            <button class="all-days-button" id="showAllDaysBottom">展开完整 96 天行程 <span>＋</span></button>
+          </div>
+          <aside class="budget-panel panel" id="budget">
+            <div class="panel-heading"><div><p class="eyebrow"><span>03 / YOUR BUDGET</span></p><h2>旅费，心里有数。</h2></div><span class="budget-icon">¥</span></div>
+            <p class="budget-intro">按整趟旅程估算，可随时调整。已自动保存在这台设备。</p>
+            <div class="budget-rows">
+              <label class="budget-row"><span><i class="category-icon stay">⌂</i><span>住宿 · 背包床位</span></span><span class="amount"><b>¥</b><input data-budget="stay" type="number" min="0" step="100" value="7200" aria-label="住宿预算，人民币" /></span></label>
+              <label class="budget-row"><span><i class="category-icon food">◌</i><span>餐饮 · 简餐自炊</span></span><span class="amount"><b>¥</b><input data-budget="food" type="number" min="0" step="100" value="6200" aria-label="餐饮预算，人民币" /></span></label>
+              <label class="budget-row"><span><i class="category-icon transit">↗</i><span>交通 · 含岛间船班</span></span><span class="amount"><b>¥</b><input data-budget="transit" type="number" min="0" step="100" value="7600" aria-label="交通预算，人民币" /></span></label>
+              <label class="budget-row"><span><i class="category-icon tickets">✳</i><span>门票与菲律宾潜水</span></span><span class="amount"><b>¥</b><input data-budget="tickets" type="number" min="0" step="100" value="5500" aria-label="门票与菲律宾潜水预算，人民币" /></span></label>
+              <label class="budget-row"><span><i class="category-icon cover">＋</i><span>签证与保险</span></span><span class="amount"><b>¥</b><input data-budget="cover" type="number" min="0" step="100" value="2000" aria-label="签证保险预算，人民币" /></span></label>
+              <label class="budget-row"><span><i class="category-icon reserve">⌁</i><span>应急金</span></span><span class="amount"><b>¥</b><input data-budget="reserve" type="number" min="0" step="100" value="1300" aria-label="应急金预算，人民币" /></span></label>
+            </div>
+            <div class="budget-total"><div><span>预计总预算</span><strong id="budgetTotal">¥29,800</strong></div><div class="daily"><span>日均预算</span><strong id="budgetDaily">¥310 <small>/ 天</small></strong></div></div>
+            <div class="budget-cap"><div class="cap-label"><span>3 万元硬上限</span><strong id="budgetCapStatus">还可安排 ¥200</strong></div><div class="cap-track"><i id="budgetCapFill"></i></div></div>
+            <div class="budget-footnote"><span>✳</span><span>规划上限 ¥29,800 尚未证明足以覆盖 19 段跨境行程：出发/返程机票、跨境交通、签证保险与菲律宾潜水都要先逐项报价。报价超 ¥30,000 就必须删减路线或天数，不能把预算显示值当成已验证的总成本；门票与潜水共 ¥5,500，至少 ¥4,300 预留菲律宾海岛潜水。</span></div>
+          </aside>
+        </section>
+
+        <section class="guide-section wrap" id="guides">
+          <div class="section-heading guide-heading"><div><p class="eyebrow"><span>03 / COUNTRY FIELD NOTES</span></p><h2>每一站，都有走法。</h2><p class="section-desc">按你的 96 天路线整理逐站游玩、跨境衔接、省钱做法与出行提醒。与你的丝路段重合处优先参考 SILKLOOP，其余按当前可查资料补充。</p></div><div class="guide-reviewed">资料复核<br /><strong>2026.10.14</strong></div></div>
+          <div class="guide-alert"><strong>出行前必复核</strong><span>票价、边境、航班和签证会变化；页面列的是规划线索。缅甸段存在显著安全风险，只有在中国领事提醒、承运航班和保险均允许时才考虑前往。</span></div>
+          <div class="guide-toolbar"><label for="guideSearch">查找国家、城市或交通</label><input id="guideSearch" type="search" placeholder="例如：撒马尔罕、潜水、跨境巴士…" autocomplete="off"/><span id="guideCount">19 个路线段</span></div>
+          <div class="guide-cards" id="guideCards" aria-live="polite"></div>
+          <p class="guide-source-note">SILKLOOP 的路线、玩法与费用均为原站参考并通过链接标注；其他段落来自所列目的地官方交通/旅游页面和独立背包客攻略。历史价格不构成当前报价。证件与安全事项按中国护照及出发日官方公告确认。</p>
+        </section>
+
+        <section class="assistant-section wrap" id="assistant">
+          <div class="assistant-card"><div class="assistant-intro"><p class="eyebrow"><span>04 / YOUR TRAVEL COMPANION</span></p><h2>路上的问题，<br />我们一起想。</h2><p>路线衔接、跨境交通、预算取舍……<br />问一个具体问题，得到一份有来有回的建议。</p><div class="assistant-stamp">✳<span>ASK<br />AWAY</span></div></div><div class="chat-panel"><div class="chat-top"><div class="assistant-avatar">漫</div><div><strong>漫行助手</strong><small id="assistantModeStatus"><i></i> 攻略问答可用 · AI 正在检查配置</small></div><button class="clear-chat" id="clearChat" aria-label="清空对话">↻</button></div><div class="chat-messages" id="chatMessages" aria-live="polite"><div class="message assistant-message"><span class="message-mark">漫</span><p>你好！我会结合这趟从新疆出发、经中亚和东南亚回上海的路线，帮你一起梳理预算、行程和跨境交通。你最想先弄清楚什么？</p></div></div><div class="suggestions"><button>乌鲁木齐到阿拉木图怎么走？</button><button>这条路线预算够吗？</button><button>菲律宾 12 天怎么安排潜水？</button></div><form class="chat-form" id="chatForm"><label class="sr-only" for="chatInput">询问旅行助手</label><input id="chatInput" maxlength="2000" placeholder="问问路线、预算或跨境交通…" autocomplete="off"/><button type="submit" aria-label="发送问题">↑</button></form><p class="chat-disclaimer">无密钥时使用内置攻略问答；配置服务端 API 密钥后启用开放式 AI。签证、边境和交通请向官方渠道复核。</p></div></div>
+        </section>
+      </main>
+      <footer class="footer wrap"><span>漫行 90+ <i>·</i> 一路慢慢回家</span><span>MADE FOR THE LONG WAY AROUND</span></footer>
+    </div>
+    <section id="printReport" aria-hidden="true"></section>
+    <div class="toast" id="toast" role="status"></div>
+  </body>
+</html>
+

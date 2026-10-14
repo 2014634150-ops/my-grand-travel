@@ -1,0 +1,13 @@
+{
+  "name": "manyou-90-plus",
+  "version": "1.0.0",
+  "private": true,
+  "description": "90天以上的丝路与东南亚长途旅行规划网站",
+  "scripts": {
+    "build": "node scripts/build-check.cjs",
+    "verify": "node scripts/build-check.cjs && node scripts/smoke-check.cjs",
+    "start": "node scripts/preview-server.cjs"
+  },
+  "engines": { "node": ">=20" }
+}
+
