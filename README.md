@@ -30,4 +30,3 @@ AI 回答和逐国资料用于旅行规划，不会查询实时班次、边境�
 - 原生 HTML、CSS 与浏览器 JavaScript，无前端依赖或构建打包步骤；逐国资料位于 `guides.js`。
 - Vercel 托管静态前端，并将 `api/assistant.mjs` 作为 Node.js Web Handler 部署到 `/api/assistant`。
 - `npm run build` 检查前端脚本语法、服务端处理器导出、部署配置和四项功能的关键结构。
-

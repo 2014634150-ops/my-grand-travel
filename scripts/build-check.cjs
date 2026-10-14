@@ -36,4 +36,3 @@ import(require("node:url").pathToFileURL(path.join(root, "api/assistant.mjs")).h
   if (typeof module.default?.fetch !== "function") throw new Error("Vercel Web Handler export is missing.");
   console.log(`Build checks passed: ${tripDays}-day itinerary, 19 researched route guides/96 daily plans, ¥${defaultBudget} budget, Philippines diving, local and server-side assistant modes, route animation, printable itinerary, and Vercel config.`);
 }).catch((error) => { console.error(error.message); process.exitCode = 1; });
-

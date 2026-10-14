@@ -5,13 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#f7f4ee" />
     <meta name="description" content="一趟九十天以上、从新疆到上海的跨境慢旅行。规划路线、预算与每日行程。" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <title>漫行 90+ · 丝路与海风</title>
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/icon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/styles.css" />
     <script src="/guides.js" defer></script>
     <script src="/app.js" defer></script>
+    <script src="/pwa.js" defer></script>
   </head>
   <body>
     <div class="app-shell">
@@ -88,10 +94,9 @@
           <div class="assistant-card"><div class="assistant-intro"><p class="eyebrow"><span>04 / YOUR TRAVEL COMPANION</span></p><h2>路上的问题，<br />我们一起想。</h2><p>路线衔接、跨境交通、预算取舍……<br />问一个具体问题，得到一份有来有回的建议。</p><div class="assistant-stamp">✳<span>ASK<br />AWAY</span></div></div><div class="chat-panel"><div class="chat-top"><div class="assistant-avatar">漫</div><div><strong>漫行助手</strong><small id="assistantModeStatus"><i></i> 攻略问答可用 · AI 正在检查配置</small></div><button class="clear-chat" id="clearChat" aria-label="清空对话">↻</button></div><div class="chat-messages" id="chatMessages" aria-live="polite"><div class="message assistant-message"><span class="message-mark">漫</span><p>你好！我会结合这趟从新疆出发、经中亚和东南亚回上海的路线，帮你一起梳理预算、行程和跨境交通。你最想先弄清楚什么？</p></div></div><div class="suggestions"><button>乌鲁木齐到阿拉木图怎么走？</button><button>这条路线预算够吗？</button><button>菲律宾 12 天怎么安排潜水？</button></div><form class="chat-form" id="chatForm"><label class="sr-only" for="chatInput">询问旅行助手</label><input id="chatInput" maxlength="2000" placeholder="问问路线、预算或跨境交通…" autocomplete="off"/><button type="submit" aria-label="发送问题">↑</button></form><p class="chat-disclaimer">无密钥时使用内置攻略问答；配置服务端 API 密钥后启用开放式 AI。签证、边境和交通请向官方渠道复核。</p></div></div>
         </section>
       </main>
-      <footer class="footer wrap"><span>漫行 90+ <i>·</i> 一路慢慢回家</span><span>MADE FOR THE LONG WAY AROUND</span></footer>
+      <footer class="footer wrap"><span>漫行 90+ <i>·</i> 一路慢慢回家</span><span class="offline-status" id="offlineStatus" role="status" aria-live="polite">首次联网后准备离线版本…</span><button class="offline-install" id="installApp" type="button">添加到主屏幕</button><span>MADE FOR THE LONG WAY AROUND</span></footer>
     </div>
     <section id="printReport" aria-hidden="true"></section>
     <div class="toast" id="toast" role="status"></div>
   </body>
 </html>
-

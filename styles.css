@@ -6,3 +6,9 @@
 @media(max-width:900px){.guide-cards{grid-template-columns:1fr}.guide-section{padding-top:33px}.guide-card{padding:17px}.guide-heading h2{font-size:23px}}
 @media(max-width:700px){.guide-heading{align-items:start}.guide-reviewed{font-size:8px}.guide-alert{display:block;font-size:10px}.guide-alert strong{display:block;margin-bottom:4px}.guide-toolbar{flex-wrap:wrap}.guide-toolbar label{width:100%}.guide-toolbar input{max-width:none;width:100%;flex:1 1 100%}.guide-toolbar>span{margin-left:auto}.guide-card-head h3{font-size:15px}.guide-day-list li{font-size:9px}.main-nav{display:none}}
 
+.footer{height:auto;min-height:55px;flex-wrap:wrap;padding-block:12px;gap:9px 16px}
+.offline-status{font-size:9px;color:#657251}
+.offline-status[data-state="offline"],.offline-status[data-state="error"]{color:#a15d42}
+.offline-install{border:1px solid #d9ddd0;border-radius:20px;background:transparent;color:#64714e;padding:5px 10px;font-size:9px;cursor:pointer}
+.offline-install:hover{background:#e9ecdf}
+@media(max-width:700px){.footer{align-items:center}.offline-status{order:3;flex:1 1 100%;font-size:8px}.offline-install{margin-left:auto}}

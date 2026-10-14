@@ -1,0 +1,19 @@
+{
+  "name": "漫行 90+ · 丝路与海风",
+  "short_name": "漫行 90+",
+  "description": "从新疆出发、穿过丝路与东南亚回到上海的长途旅行规划。",
+  "lang": "zh-CN",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f7f4ee",
+  "theme_color": "#f7f4ee",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

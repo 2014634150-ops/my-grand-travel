@@ -280,7 +280,11 @@
   async function sendQuestion(question) {
     const clean=question.trim(); if(!clean) return;
     addMessage("user",clean); conversation.push({role:"user",content:clean});
-    if (offlineAssistant) { const answer=localAssistantAnswer(clean); addMessage("assistant",answer); conversation.push({role:"assistant",content:answer}); return; }
+    if (offlineAssistant || !navigator.onLine) {
+      offlineAssistant=true;
+      $("#assistantModeStatus").innerHTML="<i></i> 离线攻略问答 · AI 需联网";
+      const answer=localAssistantAnswer(clean); addMessage("assistant",answer); conversation.push({role:"assistant",content:answer}); conversation=conversation.slice(-8); return;
+    }
     const button=$("#chatForm button"); const input=$("#chatInput"); button.disabled=true; input.disabled=true;
     const pending=document.createElement("div"); pending.className="message assistant-message"; pending.innerHTML='<span class="message-mark">漫</span><p>正在整理沿途信息…</p>'; $("#chatMessages").append(pending); $("#chatMessages").scrollTop=$("#chatMessages").scrollHeight;
     try {
@@ -295,7 +299,14 @@
       if(!response.ok) throw new Error(data.error||"暂时无法连接旅行助手，请稍后再试。");
       $("#assistantModeStatus").innerHTML="<i></i> AI 助手已连接 · 使用服务端安全调用";
       pending.remove(); const answer=String(data.answer||"我暂时没有整理出答案，请换一种问法再试试。"); addMessage("assistant",answer); conversation.push({role:"assistant",content:answer}); conversation=conversation.slice(-8);
-    } catch(error) { pending.remove(); addMessage("assistant",error.message||"连接失败，请检查网络后重试。",true); }
+    } catch(error) {
+      pending.remove();
+      if (!navigator.onLine || error instanceof TypeError) {
+        offlineAssistant=true;
+        $("#assistantModeStatus").innerHTML="<i></i> 离线攻略问答 · AI 需联网";
+        const answer=localAssistantAnswer(clean); addMessage("assistant",answer); conversation.push({role:"assistant",content:answer}); conversation=conversation.slice(-8);
+      } else addMessage("assistant",error.message||"连接失败，请检查网络后重试。",true);
+    }
     finally { button.disabled=false; input.disabled=false; input.focus(); }
   }
   function bindEvents() {
@@ -314,4 +325,3 @@
   try { const savedDate=localStorage.getItem("manyou90-startDate"); if(savedDate && /^\d{4}-\d{2}-\d{2}$/.test(savedDate)) $("#startDate").value=savedDate; } catch (_) {}
   renderStops(); drawMap(); loadBudget(); renderItinerary(); renderGuides(); bindEvents();
 })();
-
